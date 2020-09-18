@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './img/logo.png';
+import logo from './logo.png';
+import s from './header.module.css'
 const Header = () =>{
   return(
-    <header className="header">
-      <div className="logo">
+    <header className={s.header}>
+      <div className={s.logo}>
         <img src={logo} alt="логотип" />
       </div>
     </header>

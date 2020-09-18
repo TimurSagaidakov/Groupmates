@@ -1,8 +1,9 @@
 import React from 'react';
-import background from './../img/bg.jpg';
+import background from './bg.jpg';
+import s from './background.module.css';
 const Background = () => {
   return(
-    <div className="content-background">
+    <div className={s.background}>
       <img src={background} alt="" />
     </div>
   );

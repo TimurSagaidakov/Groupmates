@@ -1,0 +1,20 @@
+.container{
+  flex: 0 0 18%;
+}
+.container ul{
+  list-style: none;
+}
+.container ul li{
+  display: flex;
+  align-items: center;
+}
+.container ul li a{
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #5e9fff;
+  padding-left: 10px;
+}
+.container ul li a.active{
+  border-left: 2px solid #5e9fff;
+}

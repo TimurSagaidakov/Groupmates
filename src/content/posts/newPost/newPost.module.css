@@ -1,0 +1,12 @@
+
+.post h1{
+  color: #47525E;
+  font-size: 35px;
+}
+.post textarea{
+  width: 100%;
+  resize: none;
+  padding: 25px 15px;
+  font-size: 25px;
+  color: #B0B8C2;
+}

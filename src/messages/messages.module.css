@@ -1,0 +1,6 @@
+.container{
+  display: flex;
+}
+.wrap{
+  flex: 0 0 80%
+}

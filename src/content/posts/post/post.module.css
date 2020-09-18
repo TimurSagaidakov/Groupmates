@@ -1,0 +1,30 @@
+.post{
+  margin-top: 100px;
+}
+.info{
+  display: flex;
+}
+.post h1{
+  color: #47525E;
+  font-size: 35px;
+}
+.post textarea{
+  width: 100%;
+  resize: none;
+  padding: 25px 15px;
+  font-size: 25px;
+  color: #B0B8C2;
+}
+.post a{
+  text-decoration: none;
+}
+.title{
+  font-size: 25px;
+  line-height: 25px;
+  color: #2c2c2c;
+}
+.body{
+  margin-top: 15px;
+  letter-spacing: 0.4px;
+  line-height: 20px;
+}

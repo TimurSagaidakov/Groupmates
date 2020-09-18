@@ -1,0 +1,9 @@
+.container{
+  margin-top: 15px;
+  display: flex;
+}
+.wrap{
+  flex: 0 0 70%;
+  background-color: #fff;
+  box-shadow: 0 0 5px #c2c2c2;
+}
