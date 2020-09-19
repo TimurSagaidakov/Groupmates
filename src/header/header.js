@@ -7,6 +7,9 @@ const Header = () =>{
       <div className={s.logo}>
         <img src={logo} alt="логотип" />
       </div>
+      <div className={s.name}>
+        Одноклубники
+      </div>
     </header>
   )
 }

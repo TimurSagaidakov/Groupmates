@@ -1,12 +1,9 @@
 body{
   margin: 0;
   padding: 0;
+  background-color: #e5e5e5;
 }
 * , *:after, *:before{
   box-sizing: border-box;
 }
 
-.container{
-  margin: 2%;
-  background-color: #e5e5e5;
-}

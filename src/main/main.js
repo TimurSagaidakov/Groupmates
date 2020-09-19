@@ -9,10 +9,10 @@ const Main = (props) => {
   
   return(
       <main className={s.container}>
-        <Sidebar/>
+        <Sidebar state={props.state.sidebar}/>
         <div className={s.wrap}>
-          <Route path="/home" render={ () => <Content posts={props.posts}/> } />
-          <Route path ="/messages" render={ () => <Messages unreadMessages={props.unreadMessages} allMessages={props.allMessages}/> }/>
+          <Route path="/home" render={ () => <Content state={props.state.home}/> } />
+          <Route path ="/messages" render={ () => <Messages state={props.state.messages}/> }/>
         </div>
       </main>
   );

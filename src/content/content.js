@@ -8,8 +8,10 @@ import Post from './posts/post/post';
 
 
 const Content = (props) => {
-  
-  let postsData = props.posts.map( p => (<Post title={p.title} id={p.id} name={p.name} text={p.text}/>))
+  let timeArray=[
+    {day: '24', month: 'Июнь', current_time: '19:42'},
+  ]
+  let postsData = props.state.posts.map( p => (<Post title={p.title} id={p.id} name={p.name} text={p.text} timeArray={timeArray}/>))
   return(
     <div className={s.container}>
       <div className={s.header}>

@@ -1,0 +1,16 @@
+.container{
+  width: 50%;
+  margin: 25px auto 0;
+  text-align: center;
+}
+
+.name a{
+  font-size: 35px;
+  color: #ffffff;
+  text-decoration: none;
+}
+.avatar img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

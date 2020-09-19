@@ -6,10 +6,7 @@ import s from'./messages.module.css'
 import RightMenuMessage from './rightMenuMessage/rightMenuMessage';
 import SearchMessage from './searchMessage/searchMessage';
 import UnreadMessages from './unreadMessages/unreadMessages';
-import avatar from './userAvatar.jpg';
-import avatarEnot from './avatarEnot.jpg';
-import avatarCat from './avatarCat.jpg';
-import avatarMusic from './avatarMusic.webp';
+
 
 
 const Messages = (props) => {
@@ -19,8 +16,8 @@ return(
   <div className={s.container}>
     <div className={s.wrap}>
       <SearchMessage/> 
-      <Route path="/allMessages" render={ () => <AllMessages allMessages={props.allMessages} /> }/>
-      <Route path="/unreadMessages" render={ () => <UnreadMessages unreadMessages={props.unreadMessages}/> }/>
+      <Route path="/allMessages" render={ () => <AllMessages allMessages={props.state.allMessages} /> }/>
+      <Route path="/unreadMessages" render={ () => <UnreadMessages unreadMessages={props.state.unreadMessages}/> }/>
       <Route path="/importantMessages" component={ImportantMessages}/>
     </div>
     <RightMenuMessage/>

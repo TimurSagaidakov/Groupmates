@@ -3,10 +3,8 @@ import Time from '../../../time/time';
 import AvatarPost from './avatar/avatar';
 import s from './post.module.css';
 const Post = (props) => {
-  let timeArray=[
-    {day: '24', month: 'Июнь', current_time: '19:42'},
-  ]
-  let timeData = timeArray.map( t => <Time day={t.day} month={t.month} current_time={t.current_time}/>)
+  
+  let timeData = props.timeArray.map( t => <Time day={t.day} month={t.month} current_time={t.current_time}/>)
 return(
   <div className={s.post}>
     <div className={s.info}>

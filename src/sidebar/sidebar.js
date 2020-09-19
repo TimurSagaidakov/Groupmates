@@ -1,21 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import FriendList from './friendList/friendList';
 import s from './sidebar.module.css';
-const Sidebar = () => {
+const Sidebar = (props) => {
+  let friendListData = props.state.friendList.map(f => <FriendList name={f.name} avatar={f.avatar} id={f.id}/>)
   return(
-      <nav className={s.sidebar}>
-        <ul>
-          <li>
-            <NavLink to="/home" activeClassName={s.active}>Моя страница</NavLink>
-          </li>
-          <li>
-            <NavLink to="/messages" activeClassName={s.active}>Сообщения</NavLink>
-          </li>
-          <li><a href="/news">Новости</a></li>
-          <li><a href="/music">Музыка</a></li>
-          <li><a href="/settings">Настройки</a></li>
-        </ul>
-      </nav>
+      <div className={s.container}>
+        <nav className={s.sidebar}>
+          <ul>
+            <li>
+              <NavLink to="/home" activeClassName={s.active}>Моя страница</NavLink>
+            </li>
+            <li>
+              <NavLink to="/messages" activeClassName={s.active}>Сообщения</NavLink>
+            </li>
+            <li><a href="/news">Новости</a></li>
+            <li><a href="/music">Музыка</a></li>
+            <li><a href="/settings">Настройки</a></li>
+          </ul>
+        </nav>
+        <div className={s.title_friends}>Список друзей</div>
+      {friendListData}
+      </div>
   );
 }
 export default Sidebar;

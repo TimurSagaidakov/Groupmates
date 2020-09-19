@@ -12,7 +12,7 @@ function App(props) {
       <div>
         <div className="container">
           <Header/>
-          <Main unreadMessages={props.unreadMessages} allMessages={props.allMessages} posts={props.posts}/>
+          <Main state={props.state}/>
         </div>
       </div>
     </BrowserRouter>
