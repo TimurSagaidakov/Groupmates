@@ -4,7 +4,12 @@ import Info from './info/info';
 import NewPost from './posts/newPost/newPost';
 import s from './content.module.css'
 import Post from './posts/post/post';
-const Content = () => {
+
+
+
+const Content = (props) => {
+  
+  let postsData = props.posts.map( p => (<Post title={p.title} id={p.id} name={p.name} text={p.text}/>))
   return(
     <div className={s.container}>
       <div className={s.header}>
@@ -13,7 +18,7 @@ const Content = () => {
       </div>
       <div className={s.wrap}>
         <NewPost title="My post"/>
-        <Post/>
+        {postsData}
       </div>
     </div>
   );
