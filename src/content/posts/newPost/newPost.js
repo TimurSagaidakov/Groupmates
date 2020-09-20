@@ -1,14 +1,18 @@
 import React from 'react';
 import Button from '../../../button/button';
 import s from './newPost.module.css';
+
+import {addPostActionCreator, updateNewPostText} from './../../../redux/state';
 const NewPost = (props) => {
   let newPostElement = React.createRef();
+  let action = addPostActionCreator();
   let addPost =() => {
-    props.addPost();
+    props.dispatch( action);
   }
   let onChangePost = () =>{
     let text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    let action = updateNewPostText(text)
+    props.dispatch(action);
   }
 return(
   <div className={s.post}>

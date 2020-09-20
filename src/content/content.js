@@ -19,7 +19,7 @@ const Content = (props) => {
         <Background/>
       </div>
       <div className={s.wrap}>
-        <NewPost title="My post" addPost={props.addPost} newPostText={props.state.newPostText} updateNewPostText={props.updateNewPostText}/>
+        <NewPost title="My post" newPostText={props.state.newPostText} dispatch={props.dispatch}/>
         {postsData}
       </div>
     </div>

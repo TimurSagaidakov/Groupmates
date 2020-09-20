@@ -12,7 +12,7 @@ function App(props) {
       <div>
         <div className="container">
           <Header/>
-          <Main state={props.store} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+          <Main state={props.store} dispatch={props.dispatch}/>
         </div>
       </div>
     </BrowserRouter>

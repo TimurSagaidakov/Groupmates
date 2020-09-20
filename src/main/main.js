@@ -11,7 +11,7 @@ const Main = (props) => {
       <main className={s.container}>
         <Sidebar state={props.state.sidebar}/>
         <div className={s.wrap}>
-          <Route path="/" exact render={ () => <Content state={props.state.home} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/> } />
+          <Route path="/" exact render={ () => <Content state={props.state.home} dispatch={props.dispatch}/> } />
           <Route path ="/messages" render={ () => <Messages state={props.state.messages}/> }/>
         </div>
       </main>

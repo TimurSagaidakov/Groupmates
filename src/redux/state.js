@@ -41,27 +41,39 @@ let store ={
   _callSubscriber(){
     
   },
-  addPost (){
+  subscribe (observer){
+    this._callSubscriber = observer;
+},
+dispatch(action) {
+  if (action.type === 'ADD-POST'){
     let newPost = {
       id: 4,
       title: 'Abrakadabra',
       name: 'pokemon',  
       text: this._state.home.newPostText
-    };
-    this._state.home.posts.push(newPost);
-    this._state.home.newPostText = '';
+      };
+      this._state.home.posts.push(newPost);
+      this._state.home.newPostText = '';
+      this._callSubscriber(this._state);
+  } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+    this._state.home.newPostText = action.newText;
     this._callSubscriber(this._state);
-},
-  updateNewPostText (newText){
-    this._state.home.newPostText = newText;
-    this._callSubscriber(this._state);
+  }
+}
 
-},
-  subscribe (observer){
-    this._callSubscriber = observer;
-},
+}
 
 
+export const addPostActionCreator = () =>{
+  return {
+    type: 'ADD-POST'
+  }
+}
+export const updateNewPostText = (text) =>{
+  return{
+    type: 'UPDATE-NEW-POST-TEXT',
+    newText: text
+  }
 }
 
 export default store;
