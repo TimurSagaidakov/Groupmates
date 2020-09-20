@@ -5,8 +5,6 @@
 }
 .sidebar{
   background-color: #0050B3;
-  position: sticky;
-  top: 150px;
   z-index: 1000;
   }
   .sidebar ul{

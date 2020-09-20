@@ -6,12 +6,12 @@ import Sidebar from '../sidebar/sidebar';
 
 import s from './main.module.css';
 const Main = (props) => {
-  
+
   return(
       <main className={s.container}>
         <Sidebar state={props.state.sidebar}/>
         <div className={s.wrap}>
-          <Route path="/home" render={ () => <Content state={props.state.home}/> } />
+          <Route path="/" exact render={ () => <Content state={props.state.home} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/> } />
           <Route path ="/messages" render={ () => <Messages state={props.state.messages}/> }/>
         </div>
       </main>

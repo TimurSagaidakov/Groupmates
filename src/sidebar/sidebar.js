@@ -9,12 +9,14 @@ const Sidebar = (props) => {
         <nav className={s.sidebar}>
           <ul>
             <li>
-              <NavLink to="/home" activeClassName={s.active}>Моя страница</NavLink>
+              <NavLink to="/" activeClassName={s.active}>Моя страница</NavLink>
             </li>
             <li>
               <NavLink to="/messages" activeClassName={s.active}>Сообщения</NavLink>
             </li>
-            <li><a href="/news">Новости</a></li>
+            <li>
+              <NavLink to="/message/1" activeClassName={s.active}>Новости</NavLink>
+            </li>
             <li><a href="/music">Музыка</a></li>
             <li><a href="/settings">Настройки</a></li>
           </ul>
