@@ -6,7 +6,23 @@ import avatarMusic from './../messages/avatarMusic.webp';
 /* action type переменные */
 const newMessageBodyType = 'NEW-MESSAGE-BODY',
   sendMessageType = 'SEND-MESSAGE';
-const messagesReducer = (state, action) => {
+
+let initialState = { /* Базы данных по умолчанию для redux, чтобы он брал начальные значения*/
+  allMessages : [
+    { id:1, name: 'Петька', message: 'Я сегодня не смогу', avatar: avatarCat },
+    { id:2, name: 'Васька', message: 'Ты где?', avatar: avatarMusic },
+    { id:3, name: 'Илюшка', message: 'Я очень жду', avatar:avatar },
+    { id:4, name: 'Без ника', message: 'Спам', avatar: avatarEnot },
+  ],
+  unreadMessages : [
+    {id: '1' , name: 'Петр Первый' , avatar: avatar, message: 'Где Европа?'},
+    {id: '2' , name: 'Рузвельт' , avatar: avatarCat, message: 'How are you?'},
+    {id: '3' , name: 'Михалыч' , avatar: avatarEnot, message: 'Наша раша'},
+    {id: '4' , name: 'Морковка' , avatar: avatar, message: 'Раз два перец'},
+  ],
+  newMessageBody: ''
+}
+const messagesReducer = (state = initialState , action) => {
   switch (action.type) {
     case newMessageBodyType: {
       state.newMessageBody = action.newMessage;

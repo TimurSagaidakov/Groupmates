@@ -1,7 +1,7 @@
 import React from 'react'; /*Импорт react modules */
 import ReactDOM from 'react-dom'; 
 import './index.css'; 
-import store from './redux/store'; /*Импорт БД */
+import store from './redux/redux-store'; /*Импорт БД */
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'; /* Импорт модуля перехода между линками без перезагрузки */
@@ -16,7 +16,10 @@ let rerender =(state) =>{ /*Перерисовка приложения */
 }
 rerender(store.getState()); /* Запуск функции перерисовки приложения, полученная от подписчика */
   
-store.subscribe(rerender);  /*Первая отрисовка приложения */
+store.subscribe( () =>{
+  let state = store.getState();
+  rerender(state);
+});  /*Первая отрисовка приложения */
 
 
 
