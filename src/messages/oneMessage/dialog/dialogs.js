@@ -1,12 +1,12 @@
 import React from 'react';
-import Button from './../../../button/button';
+import Dialog from './dialog';
 import s from'./dialog.module.css';
-
-const Dialog = (props) => {
+const Dialogs = (props) => {
 return(
 <div className={s.container}>
+    <Dialog/>
     
 </div>
 );
 }
-export default Dialog;
+export default Dialogs;

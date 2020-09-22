@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import AllMessages from './allMessages/allMessages';
 import ImportantMessages from './importantMessages/importantMessages';
 import s from'./messages.module.css'
+import Dialogs from './oneMessage/dialog/dialogs';
 import RightMenuMessage from './rightMenuMessage/rightMenuMessage';
 import SearchMessage from './searchMessage/searchMessage';
 import UnreadMessages from './unreadMessages/unreadMessages';
@@ -10,19 +11,17 @@ import UnreadMessages from './unreadMessages/unreadMessages';
 
 
 const Messages = (props) => {
-  
 return(
-  <BrowserRouter>
   <div className={s.container}>
     <div className={s.wrap}>
       <SearchMessage/> 
-      <Route path="/allMessages" render={ () => <AllMessages allMessages={props.state.allMessages} /> }/>
-      <Route path="/unreadMessages" render={ () => <UnreadMessages unreadMessages={props.state.unreadMessages}/> }/>
-      <Route path="/importantMessages" component={ImportantMessages}/>
+      <Route path="/messages/allMessages" render={ () => <AllMessages allMessages={props.state.allMessages} dispatch={props.dispatch}/> }/>
+      <Route path="/messages/unreadMessages" render={ () => <UnreadMessages unreadMessages={props.state.unreadMessages}/> }/>
+      <Route path="/messages/importantMessages" component={ImportantMessages}/>
+      <Route path="/messages/1" render={ () => <Dialogs allMessages={props.state.allMessages} dispatch={props.dispatch} /> }/>
     </div>
     <RightMenuMessage/>
   </div>
-  </BrowserRouter>
 );
 }
 export default Messages;

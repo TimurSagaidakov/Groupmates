@@ -5,7 +5,7 @@ import OneMessage from '../oneMessage/oneMessage';
 const AllMessages = (props) => {
   
   
-  let OneMessageNameEl = props.allMessages.map( m => <OneMessage name={m.name} id={m.id} message ={m.message} avatar={m.avatar} allMessages={props.allMessages} />)
+  let OneMessageNameEl = props.allMessages.map( m => <OneMessage dispatch={props.dispatch} name={m.name} id={m.id} message ={m.message} avatar={m.avatar} allMessages={props.allMessages} />)
 return(
   <div className={s.container}>
     {OneMessageNameEl}

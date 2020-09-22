@@ -2,6 +2,16 @@ import avatar from './../messages/userAvatar.jpg';
 import avatarEnot from './../messages/avatarEnot.jpg';
 import avatarCat from './../messages/avatarCat.jpg';
 import avatarMusic from './../messages/avatarMusic.webp';
+
+/*Импорт reducer'ов */
+import sidebarReducer from './sidebarReducer';
+import homeReducer from './homeReducer';
+import messagesReducer from './messagesReducer';
+
+
+
+
+/* База данных */
 let store ={
   _state : {
     home : {
@@ -24,7 +34,8 @@ let store ={
         {id: '2' , name: 'Рузвельт' , avatar: avatarCat, message: 'How are you?'},
         {id: '3' , name: 'Михалыч' , avatar: avatarEnot, message: 'Наша раша'},
         {id: '4' , name: 'Морковка' , avatar: avatar, message: 'Раз два перец'},
-      ]
+      ],
+      newMessageBody: ''
     },
         sidebar: {
           friendList : [
@@ -36,44 +47,28 @@ let store ={
         }
   },
   getState(){
-    return this._state;
+    return this._state; /*Перерисовка state*/
   },
   _callSubscriber(){
-    
+    /*Вызов подписчика*/
   },
   subscribe (observer){
-    this._callSubscriber = observer;
+    this._callSubscriber = observer; /*Присваивание подписчику observer;*/
 },
+
+/* Изменение массива данных ( базы данных ) state */
 dispatch(action) {
-  if (action.type === 'ADD-POST'){
-    let newPost = {
-      id: 4,
-      title: 'Abrakadabra',
-      name: 'pokemon',  
-      text: this._state.home.newPostText
-      };
-      this._state.home.posts.push(newPost);
-      this._state.home.newPostText = '';
-      this._callSubscriber(this._state);
-  } else if (action.type === 'UPDATE-NEW-POST-TEXT'){
-    this._state.home.newPostText = action.newText;
-    this._callSubscriber(this._state);
+
+  /* Присваивание массиву данных полученных из reducer */
+  this._state.home = homeReducer(this._state.home, action); 
+  this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+  this._state.messages = messagesReducer(this._state.messages, action);
+
+  /* Вызов подписчика после получения всех reducer'ов */
+  this._callSubscriber(this._state);
+  
   }
 }
 
-}
-
-
-export const addPostActionCreator = () =>{
-  return {
-    type: 'ADD-POST'
-  }
-}
-export const updateNewPostText = (text) =>{
-  return{
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: text
-  }
-}
-
+/* Экспорт всего документа state - базы данных */
 export default store;

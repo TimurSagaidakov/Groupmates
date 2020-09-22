@@ -29,3 +29,10 @@
   color: #2c2c2c;
   text-decoration: none;
 }
+.input{
+  resize: none;
+}
+.enter_text{
+  display: flex;
+  justify-content: flex-end;
+}
