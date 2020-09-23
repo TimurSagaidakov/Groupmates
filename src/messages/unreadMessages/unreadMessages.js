@@ -1,9 +1,10 @@
 import React from 'react';
-import s from'./unreadMessages.module.css';
+import UnreadOneMessageContainer from '../oneMessage/unreadOneMessagesContainer';
+
 const UnreadMessages = (props) => {
 return(
-  <div className={s.container}>
-    <UnreadOneMessageContainer props={props.store} />
+  <div >
+    <UnreadOneMessageContainer store={props.store}/>
   </div>
 );
 }

@@ -11,7 +11,7 @@ const UnreadOneMessageContainer = (props) => {
     let action =  updateNewMessageCreator(message); /* локальная переменная для action Creator'а */
     props.store.dispatch(action); /*Вытаскиваем action из всего dispatch'a */
 }
-  let state = props.store.getState();
+  let state = props.store.getState(); /* Вытаскиваем данные из state */
   let OneMessageNameEl = state.messages.unreadMessages.map( m => <OneMessage name={m.name} id={m.id} 
     message ={m.message} avatar={m.avatar} 
     newMessageCreator={addMessage} /* Передаем в action creator созданную функцию */ 

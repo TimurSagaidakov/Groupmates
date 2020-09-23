@@ -1,5 +1,6 @@
 import React from 'react';
-import OneMessageContainer from './../oneMessage/OneMessageContainer';
+import OneMessageContainer from '../oneMessage/oneMessageContainer';
+
 import s from'./importantMessages.module.css';
 const ImportantMessages = (props) => {
 return(
