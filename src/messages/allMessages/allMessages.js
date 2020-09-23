@@ -5,7 +5,7 @@ import OneMessageContainer from '../oneMessage/oneMessageContainer';
 const AllMessages = (props) => {
 return(
   <div className={s.container}>
-    <OneMessageContainer store={props.store}/>
+    <OneMessageContainer/>
   </div>
 );
 }

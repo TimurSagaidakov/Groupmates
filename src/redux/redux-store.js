@@ -5,9 +5,9 @@ import sidebarReducer from './sidebarReducer';
 
 /* Склеиваем все reducer'ы в одну переменную*/
 let reducers = combineReducers({
-  home : homeReducer,
-  messages : messagesReducer,
-  sidebar: sidebarReducer
+  home : homeReducer, /*Соотношение ветки state к каждому reducer'у */
+  messages : messagesReducer, /*Соотношение ветки state к каждому reducer'у */
+  sidebar: sidebarReducer /*Соотношение ветки state к каждому reducer'у */
 }) 
 let store = createStore(reducers); /* store создает внутри себя эти три свойства из массива как  в нашем store */
 

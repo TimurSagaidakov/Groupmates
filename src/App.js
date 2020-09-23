@@ -11,7 +11,7 @@ function App(props) {
       <div>
         <div className="container">
           <Header/>
-          <Main store={props.store}/>
+          <Main/>
         </div>
       </div>
   );

@@ -4,7 +4,7 @@ import UnreadOneMessageContainer from '../oneMessage/unreadOneMessagesContainer'
 const UnreadMessages = (props) => {
 return(
   <div >
-    <UnreadOneMessageContainer store={props.store}/>
+    <UnreadOneMessageContainer />
   </div>
 );
 }

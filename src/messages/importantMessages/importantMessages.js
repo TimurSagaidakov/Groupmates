@@ -5,7 +5,7 @@ import s from'./importantMessages.module.css';
 const ImportantMessages = (props) => {
 return(
  <div className={s.container}>
-   <OneMessageContainer store={props.store}/>
+   <OneMessageContainer/>
  </div>
 );
 }

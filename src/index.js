@@ -5,11 +5,14 @@ import store from './redux/redux-store'; /*Импорт БД */
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'; /* Импорт модуля перехода между линками без перезагрузки */
+import {Provider} from './storeContext';
 
 let rerender =(state) =>{ /*Перерисовка приложения */
   ReactDOM.render(
     <BrowserRouter>
-    <App store={store} />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>,
   document.getElementById('root')
 );
