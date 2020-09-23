@@ -6,11 +6,12 @@ import Main from './main/main';
 
 
 function App(props) {
+
   return (
       <div>
         <div className="container">
           <Header/>
-          <Main state={props.store} dispatch={props.dispatch}/>
+          <Main store={props.store}/>
         </div>
       </div>
   );

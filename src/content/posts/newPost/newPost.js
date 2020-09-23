@@ -2,24 +2,21 @@ import React from 'react';
 import Button from '../../../button/button';
 import s from './newPost.module.css';
 
-import {addPostActionCreator, updateNewPostText} from './../../../redux/homeReducer';
 
 const NewPost = (props) => {
 
-  let action = addPostActionCreator();
-  let addPost =() => {
-    props.dispatch( action);
+  let addPostFunc =() => {
+    props.addPost();
   }
-  let onChangePost = (e) =>{
+  let ChangePostFunc = (e) =>{
     let text = e.target.value;
-    let action = updateNewPostText(text)
-    props.dispatch(action);
+    props.updateNewPostText(text);
   }
 return(
   <div className={s.post}>
     <h1>{props.title}</h1>
-      <textarea onChange={onChangePost} value={props.newPostText} type="textarea"  placeholder="Расскажите что у вас новенького?"/>
-      <Button function={addPost} name='Опубликовать'/>
+      <textarea onChange={ChangePostFunc} value={props.newPostText} type="textarea"  placeholder="Расскажите что у вас новенького?"/>
+      <Button function={addPostFunc} name='Опубликовать'/>
   </div>
 );
 }

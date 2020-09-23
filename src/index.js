@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom'; /* Импорт модуля �
 let rerender =(state) =>{ /*Перерисовка приложения */
   ReactDOM.render(
     <BrowserRouter>
-    <App store={state} dispatch={store.dispatch.bind(store)}/>
+    <App store={store} />
     </BrowserRouter>,
   document.getElementById('root')
 );

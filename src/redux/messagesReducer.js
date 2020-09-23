@@ -4,8 +4,8 @@ import avatarCat from './../messages/avatarCat.jpg';
 import avatarMusic from './../messages/avatarMusic.webp';
 
 /* action type переменные */
-const newMessageBodyType = 'NEW-MESSAGE-BODY',
-  sendMessageType = 'SEND-MESSAGE';
+const newMessageBodyType = 'NEW-MESSAGE-BODY', 
+      sendMessageType = 'SEND-MESSAGE';
 
 let initialState = { /* Базы данных по умолчанию для redux, чтобы он брал начальные значения*/
   allMessages : [
@@ -35,9 +35,9 @@ const messagesReducer = (state = initialState , action) => {
         message: state.newMessageBody,
         avatar: avatar
       }
-      state.allMessages.push(newMessageText);
-      state.newMessageBody = '';
-      return state;
+      state.allMessages.push(newMessageText); /*Пушим полученное значение в массив, который выводится на экран */
+      state.newMessageBody = ''; /* Обновляем значение в которое вводится текст */
+      return state; /*возвращаем новый state */
     }
     default: {
       return state;

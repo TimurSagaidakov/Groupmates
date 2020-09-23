@@ -1,7 +1,7 @@
 import React from 'react';
 import {updateNewMessageCreator, newMessageCreator} from './../../redux/messagesReducer';
 import OneMessage from './oneMessage';
-const OneMessageContainer = (props) => {
+const UnreadOneMessageContainer = (props) => {
 
   let  addMessage= () =>{
     let action = newMessageCreator();
@@ -12,7 +12,7 @@ const OneMessageContainer = (props) => {
     props.store.dispatch(action); /*Вытаскиваем action из всего dispatch'a */
 }
   let state = props.store.getState();
-  let OneMessageNameEl = state.messages.allMessages.map( m => <OneMessage name={m.name} id={m.id} 
+  let OneMessageNameEl = state.messages.unreadMessages.map( m => <OneMessage name={m.name} id={m.id} 
     message ={m.message} avatar={m.avatar} 
     newMessageCreator={addMessage} /* Передаем в action creator созданную функцию */ 
     updateNewMessageCreator={updateMessage} /* Передаем в action creator созданную функцию */ 
@@ -23,4 +23,4 @@ const OneMessageContainer = (props) => {
     </div>
   );  
 }
-export default OneMessageContainer;
+export default UnreadOneMessageContainer;

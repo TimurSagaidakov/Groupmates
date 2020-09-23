@@ -15,9 +15,9 @@ return(
   <div className={s.container}>
     <div className={s.wrap}>
       <SearchMessage/> 
-      <Route path="/messages/allMessages" render={ () => <AllMessages allMessages={props.state.allMessages} dispatch={props.dispatch}/> }/>
-      <Route path="/messages/unreadMessages" render={ () => <UnreadMessages unreadMessages={props.state.unreadMessages}/> }/>
-      <Route path="/messages/importantMessages" component={ImportantMessages}/>
+      <Route path="/messages/allMessages" render={ () => <AllMessages store={props.store}/> }/>
+      <Route path="/messages/unreadMessages" render={ () => <UnreadMessages store={props.store}/> }/>
+      <Route path="/messages/importantMessages" render={ () => <ImportantMessages store={props.store}/> }/>
       <Route path="/messages/1" render={ () => <Dialogs allMessages={props.state.allMessages} dispatch={props.dispatch} /> }/>
     </div>
     <RightMenuMessage/>

@@ -2,17 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Button from './../../button/button';
 import s from'./oneMessage.module.css';
-import {updateNewMessageCreator, newMessageCreator} from './../../redux/messagesReducer';
 const OneMessage = (props) => {
   
-  let action = newMessageCreator();
-  let  addMessage= () =>{
-    props.dispatch(action)
+  let  addMessageFunc= () =>{
+    props.newMessageCreator(); 
   }
-  let  updateMessage = (e) =>{
+  let  updateMessageFunc = (e) =>{
     let message = e.target.value;
-    let action =  updateNewMessageCreator(message);
-    props.dispatch(action);
+    props.updateNewMessageCreator(message);
 }
   return(
     <div className={s.container}>
@@ -27,8 +24,8 @@ const OneMessage = (props) => {
         {props.message} 
       </NavLink>
       <div className={s.enter_text}>
-        <textarea onChange={updateMessage} value={props.newMessageBody} className={s.input} placeholder="Напишите сообщение.."/>
-        <Button function={addMessage} name="Отправить" className={s.button}/>
+        <textarea onChange={updateMessageFunc} value={props.newMessageBody} className={s.input} placeholder="Напишите сообщение.."/>
+        <Button function={addMessageFunc} name="Отправить" className={s.button}/>
       </div>
     </div>
   </div>
