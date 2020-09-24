@@ -2,10 +2,12 @@ import avatar from './../messages/userAvatar.jpg';
 import avatarEnot from './../messages/avatarEnot.jpg';
 import avatarCat from './../messages/avatarCat.jpg';
 import avatarMusic from './../messages/avatarMusic.webp';
+import Avatar from './../content/avatar/avatar.jpg';
 
 /* action type переменные */
 const newMessageBodyType = 'NEW-MESSAGE-BODY', 
-      sendMessageType = 'SEND-MESSAGE';
+      sendMessageType = 'SEND-MESSAGE',
+      unreadNewMessage = 'UNREAD-NEW-MESSAGE'
 
 let initialState = { /* Базы данных по умолчанию для redux, чтобы он брал начальные значения*/
   allMessages : [
@@ -31,14 +33,25 @@ const messagesReducer = (state = initialState , action) => {
     case sendMessageType: {
       let newMessageText = {
         id: 5,
-        name: 'Вася',
+        name: 'Я',
         message: state.newMessageBody,
-        avatar: avatar
+        avatar: Avatar
       }
       state.allMessages.push(newMessageText); /*Пушим полученное значение в массив, который выводится на экран */
       state.newMessageBody = ''; /* Обновляем значение в которое вводится текст */
       return state; /*возвращаем новый state */
     }
+    case unreadNewMessage : {
+      let newMessageText = {
+        id: 5,
+        name: 'Я',
+        message: state.newMessageBody,
+        avatar: Avatar
+      }
+      state.unreadMessages.push(newMessageText); /*Пушим полученное значение в массив, который выводится на экран */
+      state.newMessageBody = ''; /* Обновляем значение в которое вводится текст */
+      return state; /*возвращаем новый state */
+    } 
     default: {
       return state;
     }
@@ -46,6 +59,6 @@ const messagesReducer = (state = initialState , action) => {
 }
 export const updateNewMessageCreator = (message) => ( { type : newMessageBodyType, newMessage : message } ) /* Пушим сообщение в массив базы данных */
 export const newMessageCreator =() => ( { type: sendMessageType  } ) /* Добавление нового сообщения в UI части */
-
+export const newUnreadMessageCreator =() => ( { type:  unreadNewMessage } ) /* Добавление нового сообщения в UI части */
 
 export default messagesReducer;

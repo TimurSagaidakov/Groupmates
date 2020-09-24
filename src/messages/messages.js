@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import AllMessages from './allMessages/allMessages';
+import AllMessagesContainer from './allMessages/allMessagesContainer';
 import ImportantMessages from './importantMessages/importantMessages';
 import s from'./messages.module.css'
-import Dialogs from './oneMessage/dialog/dialogs';
 import RightMenuMessage from './rightMenuMessage/rightMenuMessage';
 import SearchMessage from './searchMessage/searchMessage';
-import UnreadMessages from './unreadMessages/unreadMessages';
+import UnreadMessagesContainer from './unreadMessages/unreadMessagesContainer';
 
 
 
@@ -15,10 +14,9 @@ return(
   <div className={s.container}>
     <div className={s.wrap}>
       <SearchMessage/> 
-      <Route path="/messages/allMessages" render={ () => <AllMessages/> }/>
-      <Route path="/messages/unreadMessages" render={ () => <UnreadMessages /> }/>
+      <Route path="/messages/allMessages" render={ () => <AllMessagesContainer/> }/>
+      <Route path="/messages/unreadMessages" render={ () => <UnreadMessagesContainer /> }/>
       <Route path="/messages/importantMessages" render={ () => <ImportantMessages /> }/>
-      <Route path="/messages/1" render={ () => <Dialogs allMessages={props.state.allMessages} dispatch={props.dispatch} /> }/>
     </div>
     <RightMenuMessage/>
   </div>
