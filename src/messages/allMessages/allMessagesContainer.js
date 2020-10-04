@@ -1,27 +1,42 @@
-import React from 'react';
-import StoreContext from '../../storeContext';
 import {updateNewMessageCreator, newMessageCreator} from './../../redux/messagesReducer';
 import AllMessages from './allMessages';
-const AllMessagesContainer = (props) => {
-  
-  return(
-    <StoreContext.Consumer>
-      { store =>{
-        let  addMessage= () =>{
-        let action = newMessageCreator();
-        store.dispatch(action)
-      }
-      let  updateMessage = (message) =>{
-        let action =  updateNewMessageCreator(message); /* локальная переменная для action Creator'а */
-        store.dispatch(action); /*Вытаскиваем action из всего dispatch'a */
-      }
-      return  <div>
-                <AllMessages allMessages={props.allMessages} 
-                newMessageCreator={addMessage} /* Передаем в action creator созданную функцию */ 
-                updateNewMessageCreator={updateMessage} /* Передаем в action creator созданную функцию */ />
-              </div>
-      }}
-      </StoreContext.Consumer>
-  );  
+import {connect} from 'react-redux';
+import React from 'react';
+
+class AllMessagesContainer extends React.Component {
+  addMessageFunc= () =>{
+  this.props.newMessageCreator(); 
 }
-export default AllMessagesContainer;
+  updateMessageFunc = (e) =>{
+  let message = e.target.value;
+  this.props.updateNewMessageCreator(message);
+}
+render(){
+  return <AllMessages addMessageFunc={this.addMessageFunc}
+                      updateMessageFunc={this.updateMessageFunc}
+                      allMessages={this.props.allMessages}
+                      newMessageBody={this.props.newMessageBody} />
+  }
+}
+let mapStateToProps = (state) =>{
+  return{
+    allMessages: state.messages.allMessages, /* Передаем массив данных в пропсы UI компоненты */
+    newMessageBody: state.messages.newMessageBody /*Передаем переменную для записи в пропсы UI компоненты */
+  }
+}
+
+let mapDispatchToProps = (dispatch) =>{
+  return{
+    newMessageCreator : () =>{
+      let action =  newMessageCreator(); /* локальная переменная для action Creator'а  Отправка сообщения*/
+          dispatch(action)                    /*Вытаскиваем action из всего dispatch'a */
+    },
+    updateNewMessageCreator :(message) =>{
+      let action = updateNewMessageCreator(message); /* Написание сообщения */
+          dispatch(action)
+    }
+  }
+}
+
+const allMessagesContainer = connect(mapStateToProps, mapDispatchToProps)(AllMessagesContainer)
+export default allMessagesContainer;

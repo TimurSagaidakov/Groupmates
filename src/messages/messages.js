@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import AllMessagesContainer from './allMessages/allMessagesContainer';
-import ImportantMessages from './importantMessages/importantMessages';
+import ImportantMessagesContainer from './importantMessages/importantMessagesContainer';
 import s from'./messages.module.css'
 import RightMenuMessage from './rightMenuMessage/rightMenuMessage';
 import SearchMessage from './searchMessage/searchMessage';
@@ -16,7 +16,7 @@ return(
       <SearchMessage/> 
       <Route path="/messages/allMessages" render={ () => <AllMessagesContainer/> }/>
       <Route path="/messages/unreadMessages" render={ () => <UnreadMessagesContainer /> }/>
-      <Route path="/messages/importantMessages" render={ () => <ImportantMessages /> }/>
+      <Route path="/messages/importantMessages" render={ () => <ImportantMessagesContainer /> }/>
     </div>
     <RightMenuMessage/>
   </div>

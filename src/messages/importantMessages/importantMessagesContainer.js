@@ -1,8 +1,9 @@
 import {updateNewMessageCreator, newUnreadMessageCreator} from './../../redux/messagesReducer';
-import UnreadMessages from './unreadMessages';
-import {connect} from 'react-redux';
+import ImportantMessages from './importantMessages';
 import React from 'react';
-class UnreadMessagesContainer extends React.Component {
+import {connect} from 'react-redux';
+
+class ImportantMessagesContainer extends React.Component {
   addMessageFunc1= () =>{
     this.props.newUnreadMessageCreator(); 
   }
@@ -11,15 +12,15 @@ class UnreadMessagesContainer extends React.Component {
     this.props.updateNewMessageCreator(message);
 }
 render(){
-  return <UnreadMessages addMessageFunc1={this.addMessageFunc1} 
+return <ImportantMessages addMessageFunc1={this.addMessageFunc1} 
                           updateMessageFunc={this.updateMessageFunc}
-                          unreadMessages={this.props.unreadMessages}
+                          importantMessages={this.props.importantMessages}
                           newMessageBody={this.props.newMessageBody} />
-  }
+}
 }
 let mapStateToProps = (state) =>{
   return{
-    unreadMessages : state.messages.unreadMessages, /*Передаю в пропсы массив данных */
+    importantMessages : state.messages.unreadMessages, /*Передаю в пропсы массив данных */
     newMessageBody: state.messages.newMessageBody /* Передаю в UI компоненту переменную для записи в массив */
   }
 }
@@ -35,5 +36,5 @@ let mapDispatchToProps = (dispatch) =>{
     } 
   }
 }
-const unreadMessagesContainer = connect(mapStateToProps,mapDispatchToProps)(UnreadMessagesContainer)
-export default unreadMessagesContainer;
+const importantMessagesContainer = connect(mapStateToProps,mapDispatchToProps)(ImportantMessagesContainer)
+export default importantMessagesContainer;

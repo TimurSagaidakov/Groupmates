@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import s from'./friendList.module.css';
 
 const FriendList = (props) => {
-  
 return(
   <div className={s.container}>
     <div className={s.friend}>

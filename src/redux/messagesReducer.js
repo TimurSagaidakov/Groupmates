@@ -27,8 +27,9 @@ let initialState = { /* Базы данных по умолчанию для red
 const messagesReducer = (state = initialState , action) => {
   switch (action.type) {
     case newMessageBodyType: {
-      state.newMessageBody = action.newMessage;
-      return state;
+      return {...state,
+        newMessageBody: action.newMessage
+      }
     }
     case sendMessageType: {
       let newMessageText = {
@@ -37,9 +38,10 @@ const messagesReducer = (state = initialState , action) => {
         message: state.newMessageBody,
         avatar: Avatar
       }
-      state.allMessages.push(newMessageText); /*Пушим полученное значение в массив, который выводится на экран */
-      state.newMessageBody = ''; /* Обновляем значение в которое вводится текст */
-      return state; /*возвращаем новый state */
+      return{...state, /*возвращаем новый state */
+        newMessageBody: '', /* Обновляем значение в которое вводится текст */
+        allMessages: [...state.allMessages, newMessageText], /*Пушим полученное значение в массив, который выводится на экран */
+      }
     }
     case unreadNewMessage : {
       let newMessageText = {
@@ -48,9 +50,11 @@ const messagesReducer = (state = initialState , action) => {
         message: state.newMessageBody,
         avatar: Avatar
       }
-      state.unreadMessages.push(newMessageText); /*Пушим полученное значение в массив, который выводится на экран */
-      state.newMessageBody = ''; /* Обновляем значение в которое вводится текст */
-      return state; /*возвращаем новый state */
+      return{
+        ...state,
+        newMessageBody: '',
+        unreadMessages: [...state.unreadMessages, newMessageText]
+      }
     } 
     default: {
       return state;

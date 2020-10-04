@@ -5,8 +5,7 @@ import Main from './main/main';
 
 
 
-function App(props) {
-
+function App(props) {  
   return (
       <div>
         <div className="container">

@@ -5,9 +5,8 @@ import store from './redux/redux-store'; /*Импорт БД */
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'; /* Импорт модуля перехода между линками без перезагрузки */
-import {Provider} from './storeContext';
+import {Provider} from 'react-redux'; /* Импорт Provider'a из библиотеки react-redux */
 
-let rerender =(state) =>{ /*Перерисовка приложения */
   ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
@@ -16,13 +15,6 @@ let rerender =(state) =>{ /*Перерисовка приложения */
     </BrowserRouter>,
   document.getElementById('root')
 );
-}
-rerender(store.getState()); /* Запуск функции перерисовки приложения, полученная от подписчика */
-  
-store.subscribe( () =>{
-  let state = store.getState();
-  rerender(state);
-});  /*Первая отрисовка приложения */
 
 
 

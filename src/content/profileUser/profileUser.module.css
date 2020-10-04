@@ -1,0 +1,42 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.avatar{
+  width: 40%;
+  margin-right: 20px;
+}
+.avatar img{
+  width: 100%;
+}
+.name{
+  font-size: 55px;
+  text-transform: capitalize;
+}
+.status{
+  font-size: 45px;
+  font-style: italic;
+}
+.status:first-letter{
+  text-transform: uppercase;
+}
+.job_text{
+font-size: 25px;
+margin: 5px 0;
+}
+.job_text:first-letter{
+  text-transform: uppercase;
+}
+.social{
+  margin-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.social_link{
+  flex: 0 0 15%
+}
+.social_link img{
+  width: 100%;
+} 

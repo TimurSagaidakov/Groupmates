@@ -1,11 +1,7 @@
 .container{
   position: relative;
 }
-.header{
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1%;
-}
+
 .wrap{
   padding: 1%;
 }

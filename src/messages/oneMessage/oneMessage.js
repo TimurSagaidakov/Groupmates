@@ -2,8 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from'./oneMessage.module.css';
 const OneMessage = (props) => {
-  
-  
   return(
     <div className={s.container}>
     <div className={s.userAvatar}>
