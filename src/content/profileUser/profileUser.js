@@ -7,7 +7,8 @@ import github from './../../assets/img/github.svg';
 import instagram from './../../assets/img/instagram.svg';
 import vk from './../../assets/img/vk.svg';
 import facebook from './../../assets/img/facebook.svg';
-
+import defaultAvatar from '../../assets/img/defaultAvatar.jpeg';
+import PostContainer from '../posts/post/postContainer';
 
 const ProfileUser = (props) => {
   if(!props.profileUsers){
@@ -15,7 +16,7 @@ const ProfileUser = (props) => {
   }
 return <div className={s.container}>
       <div className={s.avatar}>
-        <img src={props.profileUsers.photos.large} alt="" />
+        <img src={props.profileUsers.photos.large? props.profileUsers.photos.large :  defaultAvatar} alt="" />
       </div>
       <div className={s.info}>
         <div className={s.name}>
@@ -40,22 +41,23 @@ return <div className={s.container}>
       </div>
       <div className={s.social}>
         <div className={s.social_link}>
-          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.facebook}><img src={vk} alt=""/></NavLink>
+          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.facebook ? props.profileUsers.contacts.facebook: "vk.com"}><img src={vk} alt=""/></NavLink>
         </div>
         <div className={s.social_link}>
-          <NavLink  className={s.social_link_nav} to={props.profileUsers.contacts.vk}><img src={facebook} alt=""/></NavLink>
+          <NavLink  className={s.social_link_nav} to={props.profileUsers.contacts.vk? props.profileUsers.contacts.vk: "vk.com"}><img src={facebook} alt=""/></NavLink>
         </div>
         <div className={s.social_link}>
-          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.twitter}><img src={twitter} alt=""/></NavLink>
+          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.twitter? props.profileUsers.contacts.twitter: "vk.com"}><img src={twitter} alt=""/></NavLink>
         </div>
         <div className={s.social_link}>
-          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.instagram}><img src={instagram} alt=""/></NavLink>
+          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.instagram? props.profileUsers.contacts.instagram: "vk.com"}><img src={instagram} alt=""/></NavLink>
         </div>
         <div className={s.social_link}>
-          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.github}><img src={github} alt=""/></NavLink>
+          <NavLink className={s.social_link_nav} to={props.profileUsers.contacts.github? props.profileUsers.contacts.github: "vk.com"}><img src={github} alt=""/></NavLink>
         </div>
       </div>
     </div>
+    <PostContainer/>
       </div>
 }
 export default ProfileUser;

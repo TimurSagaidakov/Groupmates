@@ -14,3 +14,11 @@
   object-fit: cover;
   border-radius: 50%;
 }
+.loginLink{
+  color: #ffffff;
+}
+.noLogin{
+  color: #ffffff;
+  font-size: 25px;
+  text-align: center;
+}

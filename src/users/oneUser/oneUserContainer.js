@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {follow, unfollow} from './../../redux/usersReducer';
+import {followUser, UnfollowUser} from './../../redux/usersReducer';
 import OneUser from './oneUser';
 
 class OneUserContainer extends React.Component{
   FollowFunc =()=>{
-    this.props.follow(this.props.id);
+    this.props.followUser(this.props.id)
   }
   UnfollowFunc =()=>{
-    this.props.unfollow(this.props.id);
+    this.props.UnfollowUser(this.props.id)
   }
   render() { 
     return <OneUser avatar={this.props.avatar}
@@ -20,14 +20,15 @@ class OneUserContainer extends React.Component{
                     uniqueUrlName={this.props.uniqueUrlName}
                     followed={this.props.followed}
                     FollowFunc={this.FollowFunc}
-                    UnfollowFunc={this.UnfollowFunc}/> }
+                    UnfollowFunc={this.UnfollowFunc}
+                    {...this.props}/> }
   }
 
 let mapStateToProps =(state)=>{
   return{
-    users: state.usersList.users
+    users: state.usersList.users,
+    following: state.usersList.following
   } 
 };
 
-const oneUserContainer = connect(mapStateToProps,{follow,unfollow})(OneUserContainer)
-export default oneUserContainer;
+export default connect(mapStateToProps,{UnfollowUser,followUser})(OneUserContainer)

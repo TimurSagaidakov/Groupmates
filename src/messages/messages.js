@@ -8,8 +8,8 @@ import SearchMessage from './searchMessage/searchMessage';
 import UnreadMessagesContainer from './unreadMessages/unreadMessagesContainer';
 
 
-
 const Messages = (props) => {
+ 
 return(
   <div className={s.container}>
     <div className={s.wrap}>

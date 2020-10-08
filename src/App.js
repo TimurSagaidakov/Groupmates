@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
-import Header from './header/header';
+import HeaderContainer from './header/headerContainer';
 import Main from './main/main';
-
-
-
-function App(props) {  
+function App(props) {
   return (
       <div>
         <div className="container">
-          <Header/>
+          <HeaderContainer/>
           <Main/>
         </div>
       </div>

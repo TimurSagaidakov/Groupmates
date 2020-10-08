@@ -7,7 +7,15 @@
   float: right;
   font-size: 25px;
   transition: 0.2s;
+  border-radius: 8px;
+  outline: none;
 }
 .button:hover{
   color: #2c2c2c;
+}
+.buttonDisabled{
+  background-color: #2d3a31;
+  color: #aaaaaa;
+  opacity: 0.7;
+  pointer-events: none;
 }

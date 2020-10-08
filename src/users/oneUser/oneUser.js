@@ -4,6 +4,7 @@ import Button from '../../button/button';
 import s from'./oneUser.module.css'
 
 const OneUser = (props) =>{
+ 
     return( 
       <div className={s.container}>
         <NavLink to={'/profileUser/' + props.id} className={s.avatar}>
@@ -22,8 +23,20 @@ const OneUser = (props) =>{
         </div>
         <div className={s.button}>
           {props.followed ? 
-          <Button function={props.UnfollowFunc} name="Отписаться"/> :
-          <Button function={props.FollowFunc} name="Подписаться"/>}
+            (props.following.some(id => id === props.id) // Проверяем при нажатии совпадает ли id пользователя 
+            ? 
+            <Button function={props.UnfollowFunc} name="Подождите" />
+            :
+            <Button function={props.UnfollowFunc} name="Отписаться" /> 
+            )
+          :
+          (props.following.some(id => id === props.id) 
+            ? 
+            <Button function={props.FollowFunc} name="Подождите" />
+            :
+            <Button function={props.FollowFunc} name="Подписаться" /> 
+            )
+          }
         </div>
       </div>
     );
