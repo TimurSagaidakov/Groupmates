@@ -10,7 +10,7 @@ let maxLength10 = maxLength(10); //Вызываем функцию с замык
 
 const MessagesForm = (props) =>{
   return  <form className={s.form} onSubmit={props.handleSubmit} >
-            <Field  typeField='textarea'
+            <Field  typefield='textarea'
                     validate={[required, maxLength10]} 
                     name='message'
                     component={Textarea} 

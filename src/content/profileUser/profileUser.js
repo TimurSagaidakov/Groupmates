@@ -10,6 +10,7 @@ import facebook from './../../assets/img/facebook.svg';
 import defaultAvatar from '../../assets/img/defaultAvatar.jpeg';
 import PostContainer from '../posts/post/postContainer';
 import ProfileStatusContainer from '../profile/profileStatus/profileStatusContainer';
+import NewPostContainer from '../posts/newPost/newPostContainer';
 
 const ProfileUser = (props) => {
   if(!props.profileUsers){
@@ -24,7 +25,7 @@ return <div className={s.container}>
           {props.profileUsers.fullName}
         </div>
         <div className={s.status}>
-        <ProfileStatusContainer status={"Я изучаю React !"}/>
+        <ProfileStatusContainer status={""}/>
         </div>
       <div className={s.job}>
         <div className={s.job_looking}>
@@ -58,7 +59,12 @@ return <div className={s.container}>
         </div>
       </div>
     </div>
-    <PostContainer/>
+    {props.userId=== +props.match.params.userId
+    ? <>
+        <NewPostContainer/>
+        <PostContainer/>
+      </>
+    : '' }    
       </div>
 }
 export default ProfileUser;

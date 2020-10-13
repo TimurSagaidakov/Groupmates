@@ -40,5 +40,4 @@ let mapDispatchToProps = (dispatch)=>{ /* Вытаскиваем dispath из st
 }
 
                                   /* state*/      /*dispatch */  /* Класс. компонента */
-const newPostContainer = connect(mapStateToProps,mapDispatchToProps)(NewPostContainer);
-export default newPostContainer;
+export default  connect(mapStateToProps,mapDispatchToProps)(NewPostContainer);

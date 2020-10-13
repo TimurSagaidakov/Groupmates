@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import FriendListContainer from './friendList/friendListContainer';
 import s from './sidebar.module.css';
@@ -8,7 +9,7 @@ const Sidebar = (props) => {
         <nav className={s.sidebar}>
           <ul>
             <li>
-              <NavLink to="/profile" activeClassName={s.active}>Моя страница</NavLink>
+              <NavLink to={'/profile/' + props.myId} activeClassName={s.active}>Моя страница</NavLink>
             </li>
             <li>
               <NavLink to="/messages" activeClassName={s.active}>Сообщения</NavLink>
@@ -16,7 +17,6 @@ const Sidebar = (props) => {
             <li>
               <NavLink to="/users" activeClassName={s.active}>Все пользователи</NavLink>
             </li>
-            <li><a href="/settings">Настройки</a></li>
           </ul>
         </nav>
         <div className={s.title_friends}>Список друзей</div>
@@ -24,4 +24,7 @@ const Sidebar = (props) => {
       </div>
   );
 }
-export default Sidebar;
+let mapStateToProps =(state)=>{
+  return {myId: state.auth.id}
+}
+export default connect(mapStateToProps)(Sidebar);

@@ -4,7 +4,7 @@ import ProfileStatus from './profileStatus';
 import {getStatus,putStatus,updateStatus} from '../../../redux/homeReducer';
 class ProfileStatusContainer extends React.Component {
   componentDidMount(){
-    this.props.getStatus() // Засовываем в компоненту данные из глобального стейта
+    this.props.getStatus(this.props.userId) // Засовываем в компоненту данные из глобального стейта
   }
   state = { // локальный стейт
     editMode: false,
@@ -20,7 +20,6 @@ class ProfileStatusContainer extends React.Component {
       editMode : false
     })
     this.props.putStatus(this.state.status); // Записываем на сервере наш новый статус
-    
   }
   UpdateStatus = (e) =>{ // Обновляем локальный стейт когда набираем сообщение в статусе
     this.setState({ // обязательно, потому что setState асинхронное событие
@@ -42,7 +41,8 @@ return <ProfileStatus {...this.props}
 }
 let mapStateToProps =(state)=>{
   return{
-    userStatus: state.home.status
+    userStatus: state.home.status,
+    userId: state.home.profileUsers.userId,
   }
 }
 

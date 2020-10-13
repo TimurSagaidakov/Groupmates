@@ -1,9 +1,21 @@
 import React from 'react';
-import FriendList from './friendList';
+import { NavLink } from 'react-router-dom';
+import s from'./friendList.module.css';
+
 const Friend = (props) => {
-  let friendListData = props.friendList.map(f => <FriendList name={f.name} key={f.id} avatar={f.avatar} id={f.id}/>)
-return <div>
-  {friendListData}
-</div>
+return(
+  <div className={s.container}>
+    <div className={s.friend}>
+      <div className={s.avatar}>
+        <img src={props.avatar} alt=''/>
+      </div>
+      <div className={s.name}>
+        <NavLink to={'/profile/' + props.id} >
+          {props.name}
+        </NavLink>
+      </div>
+    </div>
+  </div>
+);
 }
 export default Friend;

@@ -12,10 +12,9 @@ const Main = () => {
       <main className={s.container}> 
             <Sidebar/>        
         <div className={s.wrap}>
-          <Route path="/profile" render={ () => <ContentContainer/> } />
+          <Route path="/profile/:userId" render={ () => <ProfileUserContainer/> } />
           <Route path ="/messages" render={ () => <MessagesContainer /> }/>
           <Route path="/users" render={ () => <UsersContainer/> } />
-          <Route path="/profileUser/:userId" render={ () => <ProfileUserContainer/> } />
           <Route path="/login" render={ () =><LoginContainer/>}/>
         </div>
       </main> 

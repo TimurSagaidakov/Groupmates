@@ -65,7 +65,7 @@ const usersReducer = (state = initialState, action) => {
     }
   }
 }
-const setState = (users) =>({type: SetState, users})
+export const setState = (users) =>({type: SetState, users})
 const follow = (userID) => ({ type : Follow , userID})
 const unfollow = (userID) =>({ type : Unfollow, userID})
 const setUsersCurrentPage = (currentPage) =>({type: Set_Users_Current_Page, currentPage })
@@ -83,7 +83,6 @@ export const getUsers = (currentPage, usersOnPages)=>{
       dispatch(loaderUsers(false))
       dispatch(setState(response.data.items));
       dispatch(setTotalUserCount(response.data.totalCount));
-      
       });
   }
 }

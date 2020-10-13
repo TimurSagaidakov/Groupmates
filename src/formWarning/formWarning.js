@@ -8,12 +8,11 @@ export const Textarea = ({input,meta,...props}) => {
   let errorExclamation = meta.touched && meta.error 
   let errorText = meta.touched&&meta.error&&meta.active
 return <div className={s.inputWrapper + ' ' + (errorExclamation ? s.error : '')}>
-  {React.createElement(props.typeField,{   // Создаем элемент в зависимости от того что в props.type
+  {React.createElement(props.typefield,{   // Создаем элемент в зависимости от того что в props.type
                             ...input, // Вытаскиваем данные input'a
                             ...meta,  // Вытаскиваем данные meta из redux-form */
                             ...props  // Оставшиеся пропсы
                             })}
-          
             { errorExclamation && 
                 <div className={s.exclamation}>
                   <FontAwesomeIcon icon={faExclamationCircle}/>

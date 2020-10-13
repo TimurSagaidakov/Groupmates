@@ -29,8 +29,8 @@ export const profileAPI ={
     return instance.get(`auth/me`)
   },
 
-  getStatus(){//Получение статуса пользователя */
-    return instance.get('profile/status/11858')
+  getStatus(userId){//Получение статуса пользователя */
+    return instance.get('profile/status/'  + userId)
   },
   putStatus(status){ //Добавление статуса пользователя 
     return instance.put('profile/status', {status})

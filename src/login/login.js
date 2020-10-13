@@ -13,13 +13,13 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
             placeholder='Введите логин' 
             className={s.input} 
             component={Textarea} 
-            typeField='input'
+            typefield='input'
             validate={[required,maxLength50]}/>
     <Field  name='password' 
             placeholder='Введите пароль' 
             className={s.input} 
             component={Textarea} 
-            typeField='input'
+            typefield='input'
             type='password'
             validate={[required,maxLength50]}/>
     <div className={s.summaryError}> {/* Всплывающая ошибка */}
@@ -36,13 +36,11 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
     </div>
     {props.captcha === true &&
       <Field  name='captcha'
-              typeField='input'
+              typefield='input'
               component={Textarea}
               />
     }
-
     <Button name='Войти'/>
-
   </form>
 }
 const ReduxLoginForm = reduxForm({form: 'Login'})(LoginForm) //Оборачиваем нашу форму в ReduxForm HOC
@@ -51,7 +49,7 @@ const Login = (props) => {
     props.login(formData.email, formData.password, formData.rememberMe)
   }
   if(props.isAuth){
-    return <Redirect to={'/profile'}/>
+    return <Redirect to={'/profile/' + props.myId}/>
   }
 return <div className={s.container}>
   <h1>Войдите в свой аккаунт</h1>

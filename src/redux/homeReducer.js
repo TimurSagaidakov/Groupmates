@@ -91,21 +91,16 @@ export const getProfile = (userId) =>{
   return(dispatch)=>{
     dispatch(loaderUsers(true))
     profileAPI.getProfile(userId).then(response=>{
+      
       dispatch(setProfileUsersState(response.data)) 
       dispatch(loaderUsers(false))
     })
   }
 }
-export const getStatusUsers =(userId) =>{
-  return (dispatch) =>{
-    profileAPI.getProfile(userId).then(response=>{
-      dispatch(setProfileUsersState(response.data)) 
-  })
-}
-}
-export const getStatus = () => {
+
+export const getStatus = (userId) => {
   return(dispatch)=>{
-    profileAPI.getStatus().then(response =>{
+    profileAPI.getStatus(userId).then(response =>{
       dispatch(setProfileUsersStatus(response.data))
     })
   }

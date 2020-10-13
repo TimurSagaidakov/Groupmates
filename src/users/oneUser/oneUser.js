@@ -4,10 +4,9 @@ import Button from '../../button/button';
 import s from'./oneUser.module.css'
 
 const OneUser = (props) =>{
- 
     return( 
       <div className={s.container}>
-        <NavLink to={'/profileUser/' + props.id} className={s.avatar}>
+        <NavLink to={'/profile/' + props.id} className={s.avatar}>
           <img src={props.avatar} alt=""/>
         </NavLink>
         <div className={s.info}>
