@@ -13,7 +13,7 @@ return <Login captcha={this.props.captcha} login={this.login} {...this.props} />
 let mapStateToProps =(state)=>{
   return {
     isAuth: state.auth.isAuth,
-    captcha: state.auth.captcha
+    captcha: state.auth.captchaб
   }
 }
 

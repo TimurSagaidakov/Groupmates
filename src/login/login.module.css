@@ -54,3 +54,7 @@
   font-weight: 500;
   letter-spacing: 1px;
 }
+.summaryError{
+  margin: 10px 0;
+  color: #cc2f2f;
+}

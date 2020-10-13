@@ -1,5 +1,5 @@
 import {authAPI} from '../api/api';
-
+import {stopSubmit} from 'redux-form';
 
 const SetAuthUser = 'SET-AUTH-USER-DATA';
 const LoginUser = 'LOGIN-USER';
@@ -61,9 +61,11 @@ export const login =(email,password,rememberMe)=>{
       if(response.data.resultCode === 0) {
         dispatch(getLogin())
       }
-      if(response.data.resultCode === 10){
-        alert('Сработало антиспам защита, введите капчу на сайте');
-
+      else{
+        let message = response.data.messages.length > 0 //Если сообщение от сервера длиннее нуля, то есть не пустое
+            ? response.data.messages //вытаскиваем сообщение из полученного ответа от сервера
+            : "Неправильно введенные данные";
+          dispatch(stopSubmit('Login', {_error : message}))      
       }
     })
   }

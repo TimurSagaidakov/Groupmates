@@ -22,6 +22,9 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
             typeField='input'
             type='password'
             validate={[required,maxLength50]}/>
+    <div className={s.summaryError}> {/* Всплывающая ошибка */}
+      {props.error}
+    </div>
     <div className={s.checkboxWrapper}>
       <Field  name='rememberMe' 
               type='checkbox' 
@@ -39,6 +42,7 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
     }
 
     <Button name='Войти'/>
+
   </form>
 }
 const ReduxLoginForm = reduxForm({form: 'Login'})(LoginForm) //Оборачиваем нашу форму в ReduxForm HOC
