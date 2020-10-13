@@ -5,8 +5,7 @@ import avatarMusic from './../messages/avatarMusic.webp';
 import Avatar from './../content/avatar/avatar.jpg';
 
 /* action type переменные */
-const newMessageBodyType = 'NEW-MESSAGE-BODY', 
-      sendMessageType = 'SEND-MESSAGE',
+const sendMessageType = 'SEND-MESSAGE',
       unreadNewMessage = 'UNREAD-NEW-MESSAGE'
 
 let initialState = { /* Базы данных по умолчанию для redux, чтобы он брал начальные значения*/
@@ -21,25 +20,18 @@ let initialState = { /* Базы данных по умолчанию для red
     {id: '2' , name: 'Рузвельт' , avatar: avatarCat, message: 'How are you?'},
     {id: '3' , name: 'Михалыч' , avatar: avatarEnot, message: 'Наша раша'},
     {id: '4' , name: 'Морковка' , avatar: avatar, message: 'Раз два перец'},
-  ],
-  newMessageBody: ''
+  ]
 }
 const messagesReducer = (state = initialState , action) => {
   switch (action.type) {
-    case newMessageBodyType: {
-      return {...state,
-        newMessageBody: action.newMessage
-      }
-    }
     case sendMessageType: {
       let newMessageText = {
         id: 5,
-        name: 'Я',
-        message: state.newMessageBody,
+        name: 'Новый',
+        message: action.message,
         avatar: Avatar
       }
       return{...state, /*возвращаем новый state */
-        newMessageBody: '', /* Обновляем значение в которое вводится текст */
         allMessages: [...state.allMessages, newMessageText], /*Пушим полученное значение в массив, который выводится на экран */
       }
     }
@@ -47,12 +39,11 @@ const messagesReducer = (state = initialState , action) => {
       let newMessageText = {
         id: 5,
         name: 'Я',
-        message: state.newMessageBody,
+        message: action.unreadMessage,
         avatar: Avatar
       }
       return{
         ...state,
-        newMessageBody: '',
         unreadMessages: [...state.unreadMessages, newMessageText]
       }
     } 
@@ -61,8 +52,7 @@ const messagesReducer = (state = initialState , action) => {
     }
   }
 }
-export const updateNewMessageCreator = (message) => ( { type : newMessageBodyType, newMessage : message } ) /* Пушим сообщение в массив базы данных */
-export const newMessageCreator =() => ( { type: sendMessageType  } ) /* Добавление нового сообщения в UI части */
-export const newUnreadMessageCreator =() => ( { type:  unreadNewMessage } ) /* Добавление нового сообщения в UI части */
+export const newMessageCreator =(message) => ( { type: sendMessageType,message  } ) /* Добавление нового сообщения в UI части */
+export const newUnreadMessageCreator =(unreadMessage) => ( { type:  unreadNewMessage , unreadMessage} ) /* Добавление нового сообщения в UI части непрочитанные сообщения*/
 
 export default messagesReducer;

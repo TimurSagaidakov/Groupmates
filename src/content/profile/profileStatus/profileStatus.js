@@ -5,9 +5,15 @@ const ProfileStatus = (props) => {
 return <div className={s.container}>
   {props.editMode
     ?  <div className={s.inputText}>
-        <input onBlur={props.editModeOff} onChange={props.UpdateStatus}type="text" value={props.userStatus} autoFocus={true}/>
+        <input  onBlur={props.editModeOff} 
+                onChange={props.UpdateStatus}
+                type="text" value={props.status} 
+                autoFocus={true}/>
       </div>
-    : <div className={s.text} onDoubleClick={props.editModeOn}>{props.userStatus === null ? "Напишите статус" : props.userStatus}</div>  
+    : <div  className={s.text} 
+            onDoubleClick={props.editModeOn}> 
+        {props.userStatus}
+      </div>  
 }
   
   

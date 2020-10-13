@@ -1,17 +1,17 @@
-import {updateNewMessageCreator, newUnreadMessageCreator} from './../../redux/messagesReducer';
+import {newUnreadMessageCreator} from './../../redux/messagesReducer';
 import UnreadMessages from './unreadMessages';
 import {connect} from 'react-redux';
 import React from 'react';
+import {reset} from 'redux-form';
+
 class UnreadMessagesContainer extends React.Component {
-  addMessageFunc1= () =>{
-    this.props.newUnreadMessageCreator(); 
+  addMessageUnread= (unreadMessage) =>{
+    this.props.newUnreadMessageCreator(unreadMessage); 
+    this.props.reset('Message') //Зануление формы 
   }
-  updateMessageFunc = (e) =>{
-    let message = e.target.value;
-    this.props.updateNewMessageCreator(message);
-}
+  
 render(){
-  return <UnreadMessages addMessageFunc1={this.addMessageFunc1} 
+  return <UnreadMessages addMessageUnread={this.addMessageUnread} 
                           updateMessageFunc={this.updateMessageFunc}
                           unreadMessages={this.props.unreadMessages}
                           newMessageBody={this.props.newMessageBody} />
@@ -23,17 +23,6 @@ let mapStateToProps = (state) =>{
     newMessageBody: state.messages.newMessageBody /* Передаю в UI компоненту переменную для записи в массив */
   }
 }
-let mapDispatchToProps = (dispatch) =>{
-  return {
-    updateNewMessageCreator : (message) =>{
-      let action =  updateNewMessageCreator(message); /* локальная переменная для action Creator'а */
-        dispatch(action); /*Вытаскиваем action из всего dispatch'a */
-    },
-    newUnreadMessageCreator : () => {
-      let action = newUnreadMessageCreator();
-        dispatch(action)
-    } 
-  }
-}
-const unreadMessagesContainer = connect(mapStateToProps,mapDispatchToProps)(UnreadMessagesContainer)
+
+const unreadMessagesContainer = connect(mapStateToProps,{newUnreadMessageCreator,reset})(UnreadMessagesContainer)
 export default unreadMessagesContainer;

@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 const instance = axios.create({ /* Создание instance для отображения в объектах ниже */
-  withCredentials:true,/* Для авторизации на сервере */
+  withCredentials:true,/* Для авторизации на сервере цепляем cookie */
   baseURL: `https://social-network.samuraijs.com/api/1.0/`, /* Базовый адрес */
   headers:{
     "API-KEY": "dfb6dd5b-f412-4b96-9a15-3f1e5949acdc" /* ключ для запросов */
@@ -40,5 +40,14 @@ export const profileAPI ={
 export const authAPI = {
   getLogin(){ /* Получение имени пользователя из БД */
     return instance.get(`auth/me`)
+  },
+  login(email,password, rememberMe = false){ //Логинизация
+    return instance.post(`auth/login`, {email,password, rememberMe})
+  },
+  logout(){ //Вылогинизация
+    return instance.delete(`auth/login`)
+  },
+  captcha(){
+    return instance.get(`security/get-captcha-url`)
   }
 }

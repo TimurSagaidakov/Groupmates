@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+
 import Messages from './messages';
 import React from 'react';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';

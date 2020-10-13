@@ -1,19 +1,19 @@
-import {updateNewMessageCreator, newMessageCreator} from './../../redux/messagesReducer';
+import {newMessageCreator} from './../../redux/messagesReducer';
 import AllMessages from './allMessages';
 import {connect} from 'react-redux';
 import React from 'react';
+import {reset} from 'redux-form';
+
 
 class AllMessagesContainer extends React.Component {
-  addMessageFunc= () =>{
-  this.props.newMessageCreator(); 
+  addMessageFunc= (message) =>{
+  this.props.newMessageCreator(message); 
+  this.props.reset('Message')
 }
-  updateMessageFunc = (e) =>{
-  let message = e.target.value;
-  this.props.updateNewMessageCreator(message);
-}
+  
 render(){
   return <AllMessages addMessageFunc={this.addMessageFunc}
-                      updateMessageFunc={this.updateMessageFunc}
+                      //updateMessageFunc={this.updateMessageFunc}
                       allMessages={this.props.allMessages}
                       newMessageBody={this.props.newMessageBody} />
   }
@@ -25,17 +25,6 @@ let mapStateToProps = (state) =>{
   }
 }
 
-let mapDispatchToProps = (dispatch) =>{
-  return{
-    newMessageCreator : () =>{
-      let action =  newMessageCreator(); /* локальная переменная для action Creator'а  Отправка сообщения*/
-          dispatch(action)                    /*Вытаскиваем action из всего dispatch'a */
-    },
-    updateNewMessageCreator :(message) =>{
-      let action = updateNewMessageCreator(message); /* Написание сообщения */
-          dispatch(action)
-    }
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllMessagesContainer)
+
+export default connect(mapStateToProps, {newMessageCreator,reset})(AllMessagesContainer)

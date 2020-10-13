@@ -5,6 +5,7 @@ import sidebarReducer from './sidebarReducer';
 import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 import thunkMiddleware from 'redux-thunk';
+import {reducer as formReducer} from 'redux-form'; 
 
 /* Склеиваем все reducer'ы в одну переменную*/
 let reducers = combineReducers({
@@ -12,7 +13,8 @@ let reducers = combineReducers({
   messages : messagesReducer, /*Соотношение ветки state к каждому reducer'у */
   sidebar: sidebarReducer, /*Соотношение ветки state к каждому reducer'у */
   usersList: usersReducer, /* страница пользователей */
-  auth: authReducer /*Авторизация пользователя */
+  auth: authReducer, /*Авторизация пользователя */
+  form: formReducer /* Redux form */
 }) 
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware)); /* store создает внутри себя эти три свойства из массива как  в нашем store */

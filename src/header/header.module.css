@@ -8,20 +8,20 @@
   z-index: 10000;
 }
 .logo{
-  flex: 0 0 15%
+  flex: 0 0 10%
 }
 .logo img{
   width: 100%;
 }
 .name{
-  flex: 0 0 65%;
+  flex: 0 0 60%;
   text-align: center;
   font-size: 75px;
   color: #ff7a00;
   letter-spacing: 3px;
 }
 .login{
-  flex: 0 0 20%;
+  flex: 0 0 30%;
   text-align: center;
 }
 .login a{
@@ -29,4 +29,9 @@
   color: #ff7a00;
   letter-spacing: 3px;
   text-decoration: none;
+}
+.loginNav{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

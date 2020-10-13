@@ -1,9 +1,12 @@
 import React from 'react';
-import Button from './../../button/button';
 import OneMessage from '../oneMessage/oneMessage';
-
 import s from'./importantMessages.module.css';
+import FormMessage from '../messagesForm';
+
 const ImportantMessages = (props) => {
+  const onSubmit=(data)=>{
+    props.addMessage(data.message)
+  }
   return <div className={s.container}>
   {props.importantMessages.map( m => 
   <OneMessage name={m.name} 
@@ -15,8 +18,7 @@ const ImportantMessages = (props) => {
     )
   }
   <div className={s.enter_text}>
-    <textarea onChange={props.updateMessageFunc} value={props.newMessageBody} className={s.input} placeholder="Напишите сообщение.."/>
-    <Button function={props.addMessageFunc1} name="Отправить" className={s.button}/>
+    <FormMessage onSubmit={onSubmit}/>
   </div>
 </div>
 }

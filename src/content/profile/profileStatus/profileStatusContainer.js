@@ -4,28 +4,40 @@ import ProfileStatus from './profileStatus';
 import {getStatus,putStatus,updateStatus} from '../../../redux/homeReducer';
 class ProfileStatusContainer extends React.Component {
   componentDidMount(){
-    this.props.getStatus()
+    this.props.getStatus() // Засовываем в компоненту данные из глобального стейта
   }
-  state = {
+  state = { // локальный стейт
     editMode: false,
+    status: this.props.userStatus
   }
-  editModeOn = () =>{
-    this.setState({
+  editModeOn = () =>{ // Событие когда фокус в инпуте
+    this.setState({ // обязательно, потому что setState асинхронное событие
         editMode : true
       })
   }
-  editModeOff = () =>{
-    this.setState({
+  editModeOff = () =>{ // событие когда фокус выходит из инпута
+    this.setState({ // обязательно, потому что setState асинхронное событие
       editMode : false
     })
-    this.props.putStatus(this.props.userStatus);
+    this.props.putStatus(this.state.status); // Записываем на сервере наш новый статус
     
   }
-  UpdateStatus = (e) =>{
-    this.props.updateStatus(e.target.value)
+  UpdateStatus = (e) =>{ // Обновляем локальный стейт когда набираем сообщение в статусе
+    this.setState({ // обязательно, потому что setState асинхронное событие
+      status: e.currentTarget.value 
+    })
+  }
+  componentDidUpdate(){
+    
   }
 render(){
-return <ProfileStatus {...this.props} UpdateStatus={ this.UpdateStatus} editModeOff={this.editModeOff} editModeOn={this.editModeOn} editMode={this.state.editMode} userStatus={this.props.userStatus}/>
+return <ProfileStatus {...this.props} 
+                      status={this.state.status} 
+                      UpdateStatus={ this.UpdateStatus} 
+                      editModeOff={this.editModeOff} 
+                      editModeOn={this.editModeOn} 
+                      editMode={this.state.editMode} 
+                      userStatus={this.props.userStatus}/>
 }
 }
 let mapStateToProps =(state)=>{

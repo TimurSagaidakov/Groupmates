@@ -17,7 +17,7 @@ let initialState = {/* Базы данных по умолчанию для redu
   profileUsers: null,
   newPostText : '',
   isFetching: false,
-  status: 'Я изучаю React!!'
+  status: null
 }
 const homeReducer = (state = initialState, action) => {
   switch(action.type) {
