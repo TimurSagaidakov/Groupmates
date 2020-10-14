@@ -9,7 +9,6 @@ let pages = [];
 for (let i = 1; i<= usersTotalPages; i++){
   pages.push(i);
 }
-
 return(
       <div className={s.container}>
         <div className={s.pagination}>

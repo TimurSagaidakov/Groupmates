@@ -5,6 +5,8 @@ import React from 'react';
 import Loader from '../loader/loader';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getTotalCount,getUsersData,usersOnPages,currentPage,isFetching } from '../redux/selectors/users-selector';
+import { isAuth } from '../redux/selectors/auth-selector';
 
 
 class UsersContainer extends React.Component{
@@ -33,12 +35,12 @@ class UsersContainer extends React.Component{
 
 let mapStateToProps =(state)=>{
   return{
-    users: state.usersList.users,
-    usersTotalCount: state.usersList.usersTotalCount, /* Всего пользователей*/ 
-    usersOnPages: state.usersList.usersOnPages, /* Пользователей на одной странице*/
-    currentPage: state.usersList.currentPage, /*Текущая страница */
-    isFetching: state.usersList.isFetching, /* Loader */
-    isAuth: state.auth.isAuth
+    users: getUsersData(state),
+    usersTotalCount: getTotalCount(state), /* Всего пользователей*/ 
+    usersOnPages: usersOnPages(state), /* Пользователей на одной странице*/
+    currentPage: currentPage(state), /*Текущая страница */
+    isFetching: isFetching(state), /* Loader */
+    isAuth: isAuth(state)
   } 
 }
 

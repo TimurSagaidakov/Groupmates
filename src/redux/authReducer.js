@@ -44,16 +44,16 @@ const authReducer = (state = initialState, action) => {
 const SetAuthUserData = (id,email,login,isAuth)=>({type: SetAuthUser, payload:{id,email,login,isAuth}})
 //const loginUser = (email,password,rememberMe) =>({type: LoginUser, payload:{email,password,rememberMe}});
 //const AntiBotCaptcha = () =>({type: Anti_Bot_Captcha })
-export const getLogin = ()=>{
-  return(dispatch)=>{
-    authAPI.getLogin().then(response=>{
+export const getLogin = ()=>(dispatch)=>{
+    return authAPI.getLogin().then(response=>{ //return для того чтобы понять когда операция будет завершена
       if(response.data.resultCode === 0){
         let {id,email,login } = response.data.data;
         dispatch(SetAuthUserData(id,email,login,  true))
       }
     })
+    
   }
-}
+
 
 export const login =(email,password,rememberMe)=>{
   return(dispatch) =>{

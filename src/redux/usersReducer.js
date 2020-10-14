@@ -11,7 +11,7 @@ const Follow = 'FOLLOW-USER',
 let initialState = {
   users:[],
   usersTotalCount: 0, /* Всего пользователей*/ 
-  usersOnPages: 5 ,   /* Пользователей на одной странице*/
+  usersOnPages:  100,   /* Пользователей на одной странице*/
   currentPage: 1,     /* Текущая страница*/
   isFetching: false,  /* Loader */
   following: [],    /* Подписка на пользователя */
@@ -48,7 +48,7 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, currentPage: action.currentPage }
     }
     case set_Total_User_Count :{ /* Добавляем всех пользователей с сервера */
-      return { ...state, usersTotalCount: action.count/100 /*Делим на 100 потому что слишком много пользователей */ }
+      return { ...state, usersTotalCount: action.count /*Делим на 100 потому что слишком много пользователей */ }
     }
     case loader_Users :{ 
       return { ...state, isFetching: action.isFetching}
