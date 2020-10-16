@@ -12,7 +12,7 @@ return <div className={s.container}>
       </div>
     : <div  className={s.text} 
             onDoubleClick={props.editModeOn}> 
-        {props.userStatus}
+        {props.userStatus? props.userStatus: 'Нет статуса'}
       </div>  
 }
   

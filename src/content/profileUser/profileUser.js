@@ -11,6 +11,7 @@ import defaultAvatar from '../../assets/img/defaultAvatar.jpeg';
 import PostContainer from '../posts/post/postContainer';
 import ProfileStatusContainer from '../profile/profileStatus/profileStatusContainer';
 import NewPostContainer from '../posts/newPost/newPostContainer';
+import ProfileStatusHook from '../profile/profileStatus/profileStatusHook';
 
 const ProfileUser = (props) => {
   if(!props.profileUsers){
@@ -25,7 +26,7 @@ return <div className={s.container}>
           {props.profileUsers.fullName}
         </div>
         <div className={s.status}>
-        <ProfileStatusContainer status={""}/>
+        <ProfileStatusHook/>
         </div>
       <div className={s.job}>
         <div className={s.job_looking}>

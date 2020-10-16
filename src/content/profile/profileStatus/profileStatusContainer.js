@@ -26,9 +26,6 @@ class ProfileStatusContainer extends React.Component {
       status: e.currentTarget.value 
     })
   }
-  componentDidUpdate(){
-    
-  }
 render(){
 return <ProfileStatus {...this.props} 
                       status={this.state.status} 

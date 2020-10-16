@@ -35,7 +35,7 @@ class UsersContainer extends React.Component{
 
 let mapStateToProps =(state)=>{
   return{
-    users: getUsersData(state),
+    users: getUsersData(state), //селектор полученный из библиотеки reselect
     usersTotalCount: getTotalCount(state), /* Всего пользователей*/ 
     usersOnPages: usersOnPages(state), /* Пользователей на одной странице*/
     currentPage: currentPage(state), /*Текущая страница */
