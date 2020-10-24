@@ -1,5 +1,5 @@
 import {usersAPI} from '../api/api';
-
+import {updateObjectInArray} from '../helper';
 const Follow = 'FOLLOW-USER',
       Unfollow = 'UNFOLLOW-USER',
       SetState = 'SET-STATE',
@@ -11,7 +11,7 @@ const Follow = 'FOLLOW-USER',
 let initialState = {
   users:[],
   usersTotalCount: 0, /* Всего пользователей*/ 
-  usersOnPages:  100,   /* Пользователей на одной странице*/
+  usersOnPages:  10,   /* Пользователей на одной странице*/
   currentPage: 1,     /* Текущая страница*/
   isFetching: false,  /* Loader */
   following: [],    /* Подписка на пользователя */
@@ -22,23 +22,19 @@ const usersReducer = (state = initialState, action) => {
     case Follow :{ /*Подписка на пользователя */ 
       return {
         ...state, 
-        users: state.users.map( u=> {
+        users: updateObjectInArray(state.users,action.userID,'id',{followed: true}) //импорт из helper.js
+        /*state.users.map( u=> {
           if (u.id === action.userID){
             return {...u, followed: true}
           }
           return u;
-        })
+        })*/
       }
     }
     case Unfollow:{ /*Отписка от пользователя */
       return {
         ...state,
-        users: state.users.map( u=>{
-          if (u.id === action.userID){
-            return{...u, followed: false}
-          }
-          return u;
-        })
+        users: updateObjectInArray(state.users,action.userID,'id',{followed: false}) //импорт из helper.js
       }
     }
     case SetState :{ /*Запрашиваем массив данных с сервера */
@@ -77,13 +73,12 @@ const followingUsers = (isFollowing,userID) => ({type: following_Users, isFollow
         /*ThunkCreators*/
 
 export const getUsers = (currentPage, usersOnPages)=>{
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(loaderUsers(true))
-    usersAPI.getUsers(currentPage ,usersOnPages).then(response=>{
-      dispatch(loaderUsers(false))
-      dispatch(setState(response.data.items));
-      dispatch(setTotalUserCount(response.data.totalCount));
-      });
+    let response = await usersAPI.getUsers(currentPage ,usersOnPages)
+    dispatch(loaderUsers(false))
+    dispatch(setState(response.data.items));
+    dispatch(setTotalUserCount(response.data.totalCount));
   }
 }
 export const SetCurrentPage = (pageNumber)=>{ /*Переключение страниц на странице Всех пользователей */
@@ -91,27 +86,25 @@ return(dispatch)=>{
   dispatch(setUsersCurrentPage(pageNumber));
 }
 }
+
+const followUnfollow = async (dispatch, userID , AC, ApiMethod ) => { 
+  dispatch(followingUsers(true, userID))
+  let response = await ApiMethod(userID)
+    if(response.data.resultCode === 0){
+      dispatch(AC(userID));
+    }
+  dispatch(followingUsers(false, userID))
+}
+
 export const followUser = (userID) =>{
-  return (dispatch) =>{
-    dispatch(followingUsers(true, userID))
-    usersAPI.Follow(userID).then(response =>{
-      if(response.data.resultCode === 0){
-        dispatch(follow(userID));
-      }
-      dispatch(followingUsers(false, userID))
-    })
+  return async (dispatch) =>{
+    followUnfollow(dispatch,userID, follow, usersAPI.Follow)
   }
 }
 
 export const UnfollowUser =(userID)=>{
-  return (dispatch)=>{
-    dispatch(followingUsers(true, userID))
-        usersAPI.Unfollow(userID).then(response =>{
-          if(response.data.resultCode === 0){
-        dispatch(unfollow(userID));
-      }
-      dispatch(followingUsers(false, userID))
-        })
+  return async (dispatch)=>{
+    followUnfollow(dispatch,userID, unfollow, usersAPI.Unfollow)
   }
 }
 export default usersReducer;

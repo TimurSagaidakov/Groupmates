@@ -7,27 +7,3 @@
 .button button{
   float: none;
 }
-.pagination{
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  padding: 10px;
-}
-.pagination__item{
-  margin: 0 5px;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-  color: #ffffff;  
-  background-color: #12eb4e;
-  cursor: pointer;
-}
-.pagination__item:hover{
-  background-color: #069b30;
-}
-.pagination__item_active{
-  background-color: #2d3a31;
-  pointer-events: none;
-}

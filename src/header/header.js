@@ -3,7 +3,7 @@ import logo from './logo.png';
 import s from './header.module.css'
 import { NavLink } from 'react-router-dom';
 import Button from '../button/button';
-const Header = (props) =>{
+const Header = ({myId,login,logout,isAuth}) =>{
   return(
     <header className={s.header}>
       <div className={s.logo}>
@@ -13,11 +13,11 @@ const Header = (props) =>{
         Одноклубники
       </div>
       <div className={s.login}>
-        {props.isAuth
+        {isAuth
           ? 
         <div className={s.loginNav}>
-          <NavLink to={'/profile/' + props.myId} className={s.userName}>{props.login}</NavLink>
-          <Button name='Выйти' function={props.logout}/>
+          <NavLink to={'/profile/' + myId} className={s.userName}>{login}</NavLink>
+          <Button name='Выйти' function={logout}/>
         </div>
           :
         <NavLink to={'/login'}>Войти</NavLink>

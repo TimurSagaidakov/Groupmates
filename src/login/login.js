@@ -7,8 +7,8 @@ import { maxLength, required } from '../validators/validatorForm';
 import s from'./login.module.css'
 
 let maxLength50 = maxLength(50)
-const LoginForm = (props) => {
-return <form className={s.form} onSubmit={props.handleSubmit}>
+const LoginForm = ({handleSubmit,error,captcha}) => {
+return <form className={s.form} onSubmit={handleSubmit}>
     <Field  name='email' 
             placeholder='Введите логин' 
             className={s.input} 
@@ -23,7 +23,7 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
             type='password'
             validate={[required,maxLength50]}/>
     <div className={s.summaryError}> {/* Всплывающая ошибка */}
-      {props.error}
+      {error}
     </div>
     <div className={s.checkboxWrapper}>
       <Field  name='rememberMe' 
@@ -34,7 +34,7 @@ return <form className={s.form} onSubmit={props.handleSubmit}>
               />
       <label htmlFor='logCheckbox' >Запомнить меня</label>
     </div>
-    {props.captcha === true &&
+    {captcha === true &&
       <Field  name='captcha'
               typefield='input'
               component={Textarea}

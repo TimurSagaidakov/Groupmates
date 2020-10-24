@@ -1,12 +1,9 @@
-import { createSelector } from "reselect";
 
-const getUsers = (state )=>{ //Создаем селектор для HOC библиотеки reselect
+export const getUsersSelector = (state )=>{ //Создаем селектор для HOC библиотеки reselect
   return state.usersList.users 
 }
 
-export const getUsersData = createSelector(getUsers, (users) =>{ 
-  return users.filter(u=> u.photos.small !== null);
-}) 
+
 export const getTotalCount = (state) => {
   return state.usersList.usersTotalCount
 }

@@ -3,37 +3,37 @@ import { NavLink } from 'react-router-dom';
 import Button from '../../button/button';
 import s from'./oneUser.module.css'
 
-const OneUser = (props) =>{
+const OneUser = ({id,avatar,name,followed,following,UnfollowFunc,FollowFunc}) =>{
     return( 
       <div className={s.container}>
-        <NavLink to={'/profile/' + props.id} className={s.avatar}>
-          <img src={props.avatar} alt=""/>
+        <NavLink to={'/profile/' + id} className={s.avatar}>
+          <img src={avatar} alt=""/>
         </NavLink>
         <div className={s.info}>
           <div className={s.name}>
-            {props.name}
+            {name}
           </div>
           <div className={s.contry}>
-            {'props.country'}
+            {'country'}
           </div>
           <div className={s.phone}>
-            {'props.phone'}
+            {'phone'}
           </div>
         </div>
         <div className={s.button}>
-          {props.followed ? 
-            (props.following.some(id => id === props.id) // Проверяем при нажатии совпадает ли id пользователя 
+          {followed ? 
+            (following.some(iD => iD === id) // Проверяем при нажатии совпадает ли id пользователя 
             ? 
-            <Button function={props.UnfollowFunc} name="Подождите" />
+            <Button name="Подождите" />
             :
-            <Button function={props.UnfollowFunc} name="Отписаться" /> 
+            <Button function={UnfollowFunc} name="Отписаться" /> 
             )
           :
-          (props.following.some(id => id === props.id) 
+          (following.some(iD => iD === id) 
             ? 
-            <Button function={props.FollowFunc} name="Подождите" />
+            <Button name="Подождите" />
             :
-            <Button function={props.FollowFunc} name="Подписаться" /> 
+            <Button function={FollowFunc} name="Подписаться" /> 
             )
           }
         </div>

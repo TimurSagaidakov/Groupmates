@@ -88,30 +88,26 @@ export const updateNewPostText = (text) =>( { /*Добавление поста 
 } )
 
 export const getProfile = (userId) =>{
-  return(dispatch)=>{
+  return async (dispatch)=>{
     dispatch(loaderUsers(true))
-    profileAPI.getProfile(userId).then(response=>{
-      
+    let response = await profileAPI.getProfile(userId)
       dispatch(setProfileUsersState(response.data)) 
       dispatch(loaderUsers(false))
-    })
   }
 }
 
 export const getStatus = (userId) => {
-  return(dispatch)=>{
-    profileAPI.getStatus(userId).then(response =>{
+  return async (dispatch) =>{
+    let response = await profileAPI.getStatus(userId)
       dispatch(setProfileUsersStatus(response.data))
-    })
   }
 }
 export const putStatus = (status) => {
-  return(dispatch)=>{
-    profileAPI.putStatus(status).then(response =>{
+  return async (dispatch)=>{
+    let response = await profileAPI.putStatus(status)
       if(response.data.resultCode === 0){
         dispatch(setProfileUsersStatus(status))
       }
-    })
   }
 }
 

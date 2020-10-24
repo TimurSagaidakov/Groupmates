@@ -5,28 +5,31 @@ import React from 'react';
 import Loader from '../loader/loader';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getTotalCount,getUsersData,usersOnPages,currentPage,isFetching } from '../redux/selectors/users-selector';
+import { getTotalCount,getUsersSelector,usersOnPages,currentPage,isFetching } from '../redux/selectors/users-selector';
 import { isAuth } from '../redux/selectors/auth-selector';
-
 
 class UsersContainer extends React.Component{
   componentDidMount(){
-    this.props.getUsers(this.props.currentPage, this.props.usersOnPages)
+    let {currentPage,usersOnPages,getUsers} = this.props
+    getUsers(currentPage,usersOnPages)
   };
   switchPages = (pageNumber) =>{
-    this.props.getUsers(pageNumber,this.props.usersOnPages)
-    this.props.SetCurrentPage(pageNumber)
+    let {usersOnPages,getUsers,SetCurrentPage} = this.props
+    getUsers(pageNumber,usersOnPages)
+    SetCurrentPage(pageNumber)
   }
   render() { 
-    
+    let {isFetching,usersTotalCount,usersOnPages,currentPage,users} = this.props
+    /*if(isFetching){
+      return <Loader/>
+    } */
     return <>
-      {this.props.isFetching ? <Loader/> : 
-      <Users  usersTotalCount={this.props.usersTotalCount} 
-              usersOnPages={this.props.usersOnPages} 
-              currentPage={this.props.currentPage} 
+      <Users  usersTotalCount={usersTotalCount} 
+              usersOnPages={usersOnPages} 
+              currentPage={currentPage} 
               switchPages={this.switchPages} 
-              users={this.props.users}
-              {...this.props}/> }
+              users={users}
+              {...this.props}/> 
       </>
           
   }
@@ -35,7 +38,7 @@ class UsersContainer extends React.Component{
 
 let mapStateToProps =(state)=>{
   return{
-    users: getUsersData(state), //селектор полученный из библиотеки reselect
+    users: getUsersSelector(state), //селектор полученный из библиотеки reselect
     usersTotalCount: getTotalCount(state), /* Всего пользователей*/ 
     usersOnPages: usersOnPages(state), /* Пользователей на одной странице*/
     currentPage: currentPage(state), /*Текущая страница */

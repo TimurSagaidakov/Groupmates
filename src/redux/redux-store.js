@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, createStore} from 'redux';
+import {applyMiddleware, combineReducers, createStore,compose} from 'redux';
 import homeReducer from './homeReducer';
 import messagesReducer from './messagesReducer';
 import sidebarReducer from './sidebarReducer';
@@ -19,8 +19,10 @@ let reducers = combineReducers({
   app: appReducer
 }) 
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware)); /* store создает внутри себя эти три свойства из массива как  в нашем store */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers,composeEnhancers(applyMiddleware(thunkMiddleware))); //Для подключения redux devtools chrome 
+// let store = createStore(reducers, applyMiddleware(thunkMiddleware));  store создает внутри себя эти три свойства из массива как  в нашем store */
 
-window.store = store;
+window._store_ = store;
 
 export default store;

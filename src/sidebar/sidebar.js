@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import FriendListContainer from './friendList/friendListContainer';
 import s from './sidebar.module.css';
-const Sidebar = (props) => {
+const Sidebar = ({myId,}) => {
   return(
       <div className={s.container}>
         <nav className={s.sidebar}>
           <ul>
             <li>
-              <NavLink to={'/profile/' + props.myId} activeClassName={s.active}>Моя страница</NavLink>
+              <NavLink to={'/profile/' + myId} activeClassName={s.active}>Моя страница</NavLink>
             </li>
             <li>
               <NavLink to="/messages" activeClassName={s.active}>Сообщения</NavLink>

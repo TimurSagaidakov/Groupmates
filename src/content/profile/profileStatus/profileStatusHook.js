@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import s from'./profileStatus.module.css'
-import ProfileStatus from './profileStatus';
-import {getStatus,putStatus,updateStatus} from '../../../redux/homeReducer';
+import {getStatus,putStatus} from '../../../redux/homeReducer';
 
 
 const ProfileStatusHook = (props) =>{

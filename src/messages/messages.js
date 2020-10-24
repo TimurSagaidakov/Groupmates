@@ -8,7 +8,7 @@ import SearchMessage from './searchMessage/searchMessage';
 import UnreadMessagesContainer from './unreadMessages/unreadMessagesContainer';
 
 
-const Messages = (props) => {
+const Messages = () => {
  
 return(
   <div className={s.container}>
