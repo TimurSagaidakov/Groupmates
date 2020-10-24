@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8f3e0ee7f7ed56b0825350efbf23f5c5",
+    "revision": "91cf5e18b0e32436b3e0bd4fcf4c3b24",
     "url": "/Groupmates/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Groupmates/static/css/4.18bc9ff8.chunk.css"
   },
   {
-    "revision": "3583a57f170dabfd0e79",
+    "revision": "656fc57dbb2bbc9f2e2b",
     "url": "/Groupmates/static/css/main.195677c6.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Groupmates/static/js/4.1b47a3f3.chunk.js"
   },
   {
-    "revision": "3583a57f170dabfd0e79",
-    "url": "/Groupmates/static/js/main.7af52855.chunk.js"
+    "revision": "656fc57dbb2bbc9f2e2b",
+    "url": "/Groupmates/static/js/main.dbe91d38.chunk.js"
   },
   {
     "revision": "b261071c026398686a19",

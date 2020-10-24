@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Groupmates/static/css/main.195677c6.chunk.css",
-    "main.js": "/Groupmates/static/js/main.7af52855.chunk.js",
-    "main.js.map": "/Groupmates/static/js/main.7af52855.chunk.js.map",
+    "main.js": "/Groupmates/static/js/main.dbe91d38.chunk.js",
+    "main.js.map": "/Groupmates/static/js/main.dbe91d38.chunk.js.map",
     "runtime-main.js": "/Groupmates/static/js/runtime-main.693768ba.js",
     "runtime-main.js.map": "/Groupmates/static/js/runtime-main.693768ba.js.map",
     "static/js/2.a0e77354.chunk.js": "/Groupmates/static/js/2.a0e77354.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/4.1b47a3f3.chunk.js": "/Groupmates/static/js/4.1b47a3f3.chunk.js",
     "static/js/4.1b47a3f3.chunk.js.map": "/Groupmates/static/js/4.1b47a3f3.chunk.js.map",
     "index.html": "/Groupmates/index.html",
-    "precache-manifest.ccea19d783045a5ae134321f4291e86e.js": "/Groupmates/precache-manifest.ccea19d783045a5ae134321f4291e86e.js",
+    "precache-manifest.6bc3fd7ce9753b29ac93a2021b6872e6.js": "/Groupmates/precache-manifest.6bc3fd7ce9753b29ac93a2021b6872e6.js",
     "service-worker.js": "/Groupmates/service-worker.js",
     "static/css/3.737ecf7a.chunk.css.map": "/Groupmates/static/css/3.737ecf7a.chunk.css.map",
     "static/css/4.18bc9ff8.chunk.css.map": "/Groupmates/static/css/4.18bc9ff8.chunk.css.map",
@@ -39,6 +39,6 @@
     "static/js/runtime-main.693768ba.js",
     "static/js/2.a0e77354.chunk.js",
     "static/css/main.195677c6.chunk.css",
-    "static/js/main.7af52855.chunk.js"
+    "static/js/main.dbe91d38.chunk.js"
   ]
 }
